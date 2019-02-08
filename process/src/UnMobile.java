@@ -6,8 +6,8 @@ import javax.swing.*;
 class UnMobile extends JPanel implements Runnable
 {
     int saLargeur, saHauteur, sonDebDessin;
-    final int sonPas = 1, sonTemps=5, sonCote=40;
-    static semaphoreBinaire sem = new semaphoreBinaire(6);
+    final int sonPas = 1, sonTemps=5, sonCote=10;
+    static semaphoreBinaire sem = new semaphoreBinaire(12);
     Color color = Color.BLACK;
     
     UnMobile(int telleLargeur, int telleHauteur)
