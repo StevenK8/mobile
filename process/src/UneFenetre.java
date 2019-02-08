@@ -44,30 +44,17 @@ class UneFenetre extends JFrame implements ActionListener
 
 	public void actionPerformed(ActionEvent evt) {
 		System.out.println("pause");
-		for (int i=0; i<NBRLIG; i++){
-			if(((JButton) evt.getSource()).getName() == Integer.toString(i)){
-				if(arret[i] == false){
-					tabT[i].suspend();
-					arret[i] = true;
-					tabBouton[i].setBackground(Color.RED);
-					tabBouton[i].setText("Reprendre");
-				}else{
-					tabT[i].resume();
-					arret[i] = false;
-					tabBouton[i].setBackground(Color.GREEN);
-					tabBouton[i].setText("Pause");
-				}
-				
-			}
+		int i = Integer.parseInt(((JButton) evt.getSource()).getName());
+			if(arret[i] == false){
+				tabT[i].suspend();
+				arret[i] = true;
+				tabBouton[i].setBackground(Color.RED);
+				tabBouton[i].setText("Reprendre");
+			}else{
+				tabT[i].resume();
+				arret[i] = false;
+				tabBouton[i].setBackground(Color.GREEN);
+				tabBouton[i].setText("Pause");
+			}	
 		}
-		/*
-		if(t1.getState() != Thread.State.WAITING){
-			t1.suspend();
-			System.out.println("t1 suspend");
-		}else{
-			t1.resume();
-			System.out.println("t1 resume");
-		}	*/
-		
 	}
-}
