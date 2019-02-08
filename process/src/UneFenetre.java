@@ -7,14 +7,13 @@ import javax.swing.*;
 class UneFenetre extends JFrame implements ActionListener
 {
     UnMobile sonMobile;
-    private final int LARG=900, HAUT=1000, NBRLIG=40, NBRCOL = 2, LARGE_MOBILE=LARG/NBRCOL-39, HAUT_MOBILE=HAUT/NBRLIG/2;
+    private final int LARG=1900, HAUT=1000, NBRLIG=50, NBRCOL = 2, LARGE_MOBILE=LARG/NBRCOL-39, HAUT_MOBILE=HAUT/NBRLIG/2, GAUCHE = LARG/NBRCOL/3, DROITE = 2*LARG/NBRCOL/3;
     private JButton[] tabBouton;
     private Thread[] tabT;
     private UnMobile[] tabMobile;
     private boolean[] arret;
     
-    public UneFenetre()
-    {
+    public UneFenetre(){
     	
     super("Thread");
     setSize( LARG, HAUT );
@@ -37,13 +36,12 @@ class UneFenetre extends JFrame implements ActionListener
     	leConteneur.add(tabBouton[i]);
     	leConteneur.add(tabMobile[i]);
     	tabT[i] = new Thread(tabMobile[i]);
-    	tabT[i].start();
     }
-    
+    for(int i=0; i<NBRLIG; i++)
+    	tabT[i].start();
     }
 
 	public void actionPerformed(ActionEvent evt) {
-		System.out.println("pause");
 		int i = Integer.parseInt(((JButton) evt.getSource()).getName());
 			if(arret[i] == false){
 				tabT[i].suspend();
@@ -53,7 +51,7 @@ class UneFenetre extends JFrame implements ActionListener
 			}else{
 				tabT[i].resume();
 				arret[i] = false;
-				tabBouton[i].setBackground(Color.GREEN);
+				tabBouton[i].setBackground(null);
 				tabBouton[i].setText("Pause");
 			}	
 		}
